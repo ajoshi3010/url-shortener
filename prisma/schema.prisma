@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model Urlmap{
+  userUrl String @unique @id
   realUrl String
-  userUrl String
-  @@id([realUrl,userUrl])
+  // @@id([realUrl,userUrl])
 }
