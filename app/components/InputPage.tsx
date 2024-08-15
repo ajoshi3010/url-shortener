@@ -47,7 +47,7 @@ const InputPage: React.FC = () => {
     } else {
         alert("The given URL already exists");
     }
-    alert(`You can access your site at ${process.env.NEXT_PUBLIC_API_BASE_URL}/custom/${customUrl}`);
+    alert(`You can access your site at ${process.env.NEXT_PUBLIC_API_BASE_URL}custom/${customUrl}`);
     window.location.reload();
 };
     return (
