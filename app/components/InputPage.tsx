@@ -21,6 +21,7 @@ const InputPage: React.FC = () => {
         } catch (error) {
             setValid(false);
         }
+        console.log(`valid:${valid}`)
         setLoading(false);
     };
 
@@ -50,6 +51,7 @@ const InputPage: React.FC = () => {
             alert("the given url already exists")
 
         }
+        alert(`you can access your site at http://localhost:3000/custom/${customUrl}`)
         window.location.reload();
 
     }

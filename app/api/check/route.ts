@@ -4,8 +4,10 @@ import axios from "axios";
 async function checkUrlExists(url: string): Promise<boolean> {
   try {
     const response = await axios.get(url);
+    console.log("url exists")
     return response.status === 200;
   } catch (err) {
+    console.log(err)
     return false;
   }
 }
@@ -13,6 +15,7 @@ async function checkUrlExists(url: string): Promise<boolean> {
 export async function POST(req: NextRequest) {
   try {
     const { url } = await req.json(); // Extract the URL from the request body
+    console.log(`url:${url}`)
     const isValid = await checkUrlExists(url); // Await the result of the asynchronous function
     return NextResponse.json({ valid: isValid });
   } catch (error) {
