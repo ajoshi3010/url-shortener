@@ -3,11 +3,25 @@ import axios from "axios";
 
 async function checkUrlExists(url: string): Promise<boolean> {
   try {
-    const response = await axios.get(url);
-    console.log("url exists")
-    return response.status === 200;
+    const response = await axios.get(url, {
+      validateStatus: function (status) {
+        return status < 500; // Resolve only if the status code is less than 500
+      },
+    });
+
+    console.log(`Status code: ${response.status}`);
+
+    // Consider these status codes as "URL exists"
+    const validStatusCodes = [200, 301, 302, 303, 307, 308, 401, 403, 406, 429];
+
+    return validStatusCodes.includes(response.status);
   } catch (err) {
-    console.log(err)
+    if (axios.isAxiosError(err)) {
+      console.log(`Error status: ${err.response?.status}`);
+      console.log(`Error message: ${err.message}`);
+    } else {
+      console.log(`Unexpected error: ${err}`);
+    }
     return false;
   }
 }
