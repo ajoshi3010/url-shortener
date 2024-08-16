@@ -3,7 +3,6 @@
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
 import styles from './InputPage.module.css';
-
 const InputPage: React.FC = () => {
     const [url, setUrl] = useState<string>("");
     const [customUrl, setCustomUrl] = useState<string>("");
@@ -11,7 +10,6 @@ const InputPage: React.FC = () => {
     const [validCustom, setValidCustom] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [checked, setChecked] = useState(false);
-
     // ... (rest of your functions remain the same)
     const checkUrl = async () => {
         setLoading(true);

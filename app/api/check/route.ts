@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
-
+import { auth, currentUser } from '@clerk/nextjs/server'
 async function checkUrlExists(url: string): Promise<boolean> {
   try {
     const response = await axios.get(url, {
