@@ -1,7 +1,17 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const Analysis = ({ data }) => {
+// Define the interface for the data prop
+interface DataItem {
+  userUrl: string;
+  count: number;
+}
+
+interface AnalysisProps {
+  data: DataItem[]; // Array of data items with userUrl and count
+}
+
+const Analysis: React.FC<AnalysisProps> = ({ data }) => {
   // Ensure the data is in the correct format
   const formattedData = data && data.length > 0 ? data : [];
 
