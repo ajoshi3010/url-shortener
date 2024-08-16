@@ -15,7 +15,7 @@ model Urlmap{
 
 model Urlcount{
   userUrl String @unique @id
-  count Int @default(1)
+  count Int @default(0)
 }
 model Userurls{
   userId String 

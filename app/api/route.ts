@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
-
+// import { auth, currentUser } from '@clerk/nextjs/server'
 const client = new PrismaClient();
 
 export async function POST(req: NextRequest) {
+    // const { userId } = auth()
     const { customUrl } = await req.json();
-    console.log(customUrl)
+    // console.log(customUrl)
     try {
         const realUrl = await client.urlmap.findUnique({
             where: {
@@ -17,7 +18,17 @@ export async function POST(req: NextRequest) {
         });
 
         if (realUrl) {
-            console.log(realUrl)
+            const urlcount=await client.urlcount.update({
+                where:{
+                    userUrl:customUrl,
+                },
+                data:{
+                    count:{
+                        increment:1
+                    }
+                }
+            })
+            // console.log(realUrl)
             // Redirect to the real URL
             return NextResponse.json(realUrl.realUrl);
         } else {

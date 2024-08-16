@@ -9,7 +9,7 @@ async function checkUrlExists(url: string): Promise<boolean> {
       },
     });
 
-    console.log(`Status code: ${response.status}`);
+    // console.log(`Status code: ${response.status}`);
 
     // Consider these status codes as "URL exists"
     const validStatusCodes = [200, 301, 302, 303, 307, 308, 401, 403, 406, 429];
@@ -17,10 +17,10 @@ async function checkUrlExists(url: string): Promise<boolean> {
     return validStatusCodes.includes(response.status);
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      console.log(`Error status: ${err.response?.status}`);
-      console.log(`Error message: ${err.message}`);
+      // console.log(`Error status: ${err.response?.status}`);
+      // console.log(`Error message: ${err.message}`);
     } else {
-      console.log(`Unexpected error: ${err}`);
+      // console.log(`Unexpected error: ${err}`);
     }
     return false;
   }
@@ -29,11 +29,11 @@ async function checkUrlExists(url: string): Promise<boolean> {
 export async function POST(req: NextRequest) {
   try {
     const { url } = await req.json(); // Extract the URL from the request body
-    console.log(`url:${url}`)
+    // console.log(`url:${url}`)
     const isValid = await checkUrlExists(url); // Await the result of the asynchronous function
     return NextResponse.json({ valid: isValid });
   } catch (error) {
-    console.error("Error processing the request", error);
+    // console.error("Error processing the request", error);
     return NextResponse.json({ valid: false }, { status: 500 });
   }
 }
