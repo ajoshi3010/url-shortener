@@ -13,3 +13,7 @@ model Urlmap{
   realUrl String
 }
 
+model Urlcount{
+  userUrl String @unique @id
+  count Int @default(1)
+}
