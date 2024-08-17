@@ -1,12 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 
-const prisma = new PrismaClient();
+import client from '@/app/lib/prisma';
 
 async function getUserUrlsWithCount(userId: string) {
   // Step 1: Get all userUrls for the given userId
-  const userUrls = await prisma.userurls.findMany({
+  const userUrls = await client.userurls.findMany({
     where: {
       userId: userId,
     },
@@ -19,7 +19,7 @@ async function getUserUrlsWithCount(userId: string) {
   // Step 2: Fetch counts for these userUrls and await all promises
   const result = await Promise.all(
     userUrls.map(async (url) => {
-      const count = await prisma.urlcount.findUnique({
+      const count = await client.urlcount.findUnique({
         where: {
           userUrl: url.userUrl,
         },

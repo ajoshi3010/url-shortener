@@ -1,8 +1,7 @@
 // import { NextApiRequest } from "next";
-import { PrismaClient } from "@prisma/client";
-import { auth, currentUser } from '@clerk/nextjs/server'
+import client from '@/app/lib/prisma';
+import { auth } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from "next/server";
-const client=new PrismaClient()
 export async function POST(req:NextRequest){
     const { userId } = auth()
     const {realUrl,userUrl}=await req.json();

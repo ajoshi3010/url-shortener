@@ -1,13 +1,14 @@
 import AnalysisComponent from "./components/AnalysisComponent";
 import InputPage from "./components/InputPage";
+import './globals.css';
 
 export default function Page() {
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <div style={{ flex: '1', borderRight: '1px solid #ccc' }}>
+    <div className="flex h-screen">
+      <div className="flex-1 border-r border-gray-300">
         <InputPage />
       </div>
-      <div style={{ flex: '1' }}>
+      <div className="flex-1">
         <AnalysisComponent />
       </div>
     </div>

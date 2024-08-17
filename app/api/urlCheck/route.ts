@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-const client=new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+import client from "@/app/lib/prisma";
 export async function POST(req:NextRequest){
     const {customUrl}=await req.json();
     const umap=await client.urlmap.findUnique({

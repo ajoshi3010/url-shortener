@@ -18,7 +18,7 @@ model Urlcount{
   count Int @default(0)
 }
 model Userurls{
-  userId String 
-  userUrl String
-  @@id([userId,userUrl])
+  userUrl String @unique @id
+  userId String  
+  // @@id([userId,userUrl])
 }
