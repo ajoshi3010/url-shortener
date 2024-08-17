@@ -4,7 +4,7 @@ import Analysis from "../components/Analysis";
 
 import React, { useEffect, useState } from "react";
 // import React from "react";
-export default function Page(){
+export default function AnalysisComponent(){
     const [data,setData]=useState<any>([])
     
     useEffect(()=>{

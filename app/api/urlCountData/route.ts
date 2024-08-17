@@ -27,7 +27,7 @@ async function getUserUrlsWithCount(userId: string) {
           count: true,
         },
       });
-      return { userUrl: url.userUrl, count: count ? count.count/2 : 0 }; // Handle case where count may be null
+      return { userUrl: url.userUrl, count: count ? count.count : 0 }; // Handle case where count may be null
     })
   );
 
