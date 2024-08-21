@@ -12,17 +12,18 @@ interface Url {
 export default async function URLS() {
   const { userId } = auth();
   const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urls`, {
-    userId: userId
+    userId: userId,
   });
   const urls: Url[] = response.data.urls; // Ensure the data structure matches your API response
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
-      <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4">Your URLs</h2>
+      <table className="w-full bg-gray-50 shadow rounded-lg">
         <thead className="bg-gray-800 text-white">
           <tr>
-            <th className="py-2 px-4 text-left">User Url</th>
-            <th className="py-2 px-4 text-left">Real Url</th>
+            <th className="py-2 px-4 text-left">User URL</th>
+            <th className="py-2 px-4 text-left">Real URL</th>
             <th className="py-2 px-4 text-center">Actions</th>
           </tr>
         </thead>

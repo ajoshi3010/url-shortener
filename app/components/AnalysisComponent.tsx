@@ -1,28 +1,29 @@
-"use client"
+// AnalysisComponent
+"use client";
 import axios from "axios";
 import Analysis from "../components/Analysis";
-
 import React, { useEffect, useState } from "react";
-// import React from "react";
-export default function AnalysisComponent(){
-    const [data,setData]=useState<any>([])
-    
-    useEffect(()=>{
-        async function fetch(){
 
-            try{
-                const d=await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urlCountData`)
-                console.log(d.data.data)
-                setData(d.data.data)
-            }
-            catch(error){
-                console.error(error)
-            }
-        }
-        fetch()
-    },[])
-    return(
-        <Analysis data={data}/>
-        // <p>hello</p>
-    )
+export default function AnalysisComponent() {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const d = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urlCountData`);
+        console.log(d.data.data);
+        setData(d.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetch();
+  }, []);
+
+  return (
+    <div className="p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4">URL Analysis</h2>
+      <Analysis data={data} />
+    </div>
+  );
 }
