@@ -6,7 +6,6 @@ import client from '../lib/prisma';
 export async function POST(req: NextRequest) {
     // const { userId } = auth()
     const { customUrl } = await req.json();
-    // console.log(customUrl)
     try {
         const realUrl = await client.urlmap.findUnique({
             where: {
@@ -28,7 +27,6 @@ export async function POST(req: NextRequest) {
                     }
                 }
             })
-            // console.log(realUrl)
             // Redirect to the real URL
             return NextResponse.json(realUrl.realUrl);
         } else {

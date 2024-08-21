@@ -6,7 +6,6 @@ import client from "@/app/lib/prisma";
 export async function POST(req:NextRequest){
     // const { userId } = auth()
     const {userId}=await req.json();
-    console.log(userId)
     if(userId){
         
         const userUrls=await client.userurls.findMany({

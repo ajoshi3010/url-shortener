@@ -14,7 +14,6 @@ async function getUserUrlsWithCount(userId: string) {
       userUrl: true,
     },
   });
-  console.log(userUrls);
 
   // Step 2: Fetch counts for these userUrls and await all promises
   const result = await Promise.all(
@@ -38,7 +37,6 @@ export async function GET(req: NextRequest) {
   const { userId } = auth();
   if (userId) {
     const data = await getUserUrlsWithCount(userId); // Await the result
-    console.log(data);
 
     return NextResponse.json({ data });
   }

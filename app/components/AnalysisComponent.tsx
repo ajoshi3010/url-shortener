@@ -11,7 +11,6 @@ export default function AnalysisComponent() {
     async function fetch() {
       try {
         const d = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urlCountData`);
-        console.log(d.data.data);
         setData(d.data.data);
       } catch (error) {
         console.error(error);
