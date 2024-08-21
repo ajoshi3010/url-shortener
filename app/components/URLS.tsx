@@ -23,7 +23,7 @@ export default async function URLS() {
         <thead className="bg-gray-800 text-white">
           <tr>
             <th className="py-2 px-4 text-left">User URL</th>
-            <th className="py-2 px-4 text-left">Real URL</th>
+            <th className="py-2 px-4 text-left max-w-xs">Real URL</th>
             <th className="py-2 px-4 text-center">Actions</th>
           </tr>
         </thead>
