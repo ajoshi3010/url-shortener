@@ -1,8 +1,8 @@
 "use client";
 
 import axios from "axios";
-import { useState } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useState, useEffect, useRef } from "react";
+import Clipboard from "clipboard";
 
 interface Url {
   userUrl: string;
@@ -34,6 +34,7 @@ const ClipboardIcon = () => (
 
 const UrlRow = ({ url }: UrlRowProps) => {
   const [isCopied, setIsCopied] = useState(false);
+  const clipboardRef = useRef<HTMLButtonElement>(null);
 
   const deleteUrl = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this URL?");
@@ -51,6 +52,23 @@ const UrlRow = ({ url }: UrlRowProps) => {
     }
   };
 
+  useEffect(() => {
+    const clipboard = new Clipboard(clipboardRef.current!, {
+      text: () => url.realUrl.realUrl,
+    });
+
+    clipboard.on('success', () => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+    });
+
+    clipboard.on('error', () => {
+      setIsCopied(false);
+    });
+
+    return () => clipboard.destroy();
+  }, [url.realUrl.realUrl]);
+
   return (
     <tr className="border-b hover:bg-gray-50 transition-colors">
       <td className="py-2 px-4">{url.userUrl}</td>
@@ -63,20 +81,13 @@ const UrlRow = ({ url }: UrlRowProps) => {
         >
           {url.realUrl.realUrl}
         </a>
-        <CopyToClipboard
-          text={url.realUrl.realUrl}
-          onCopy={() => {
-            setIsCopied(true);
-            setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
-          }}
+        <button
+          ref={clipboardRef}
+          className="ml-2 text-gray-500 hover:text-gray-700"
+          title="Copy to clipboard"
         >
-          <button
-            className="ml-2 text-gray-500 hover:text-gray-700"
-            title="Copy to clipboard"
-          >
-            <ClipboardIcon />
-          </button>
-        </CopyToClipboard>
+          <ClipboardIcon />
+        </button>
         {isCopied && <span className="ml-2 text-green-600 text-sm">Copied!</span>}
       </td>
       <td className="py-2 px-4 text-center">
