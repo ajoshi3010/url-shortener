@@ -55,8 +55,9 @@ export default function RootLayout({
             <SignedOut>
               <SignInButton />
             </SignedOut>
+            <a href="https://github.com/ajoshi3010/url-shortener"><img src="https://img.icons8.com/?size=100&id=106567&format=png&color=000000" height={30} width={30} alt="git hub repo" /></a>
           </header>
-          
+
           <main>{children}</main>
         </body>
       </html>
