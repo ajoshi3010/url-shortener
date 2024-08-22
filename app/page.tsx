@@ -8,9 +8,7 @@ export default function Page() {
       <div className="flex-1 border-r border-gray-300">
         <InputPage />
       </div>
-      <div className="flex-1">
-        <AnalysisComponent />
-      </div>
+    
     </div>
   );
 }

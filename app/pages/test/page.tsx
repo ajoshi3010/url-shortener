@@ -1,6 +1,6 @@
 // Page Component
-import URLS from "../components/URLS";
-import AnalysisComponent from "../components/AnalysisComponent";
+import URLS from "../../components/URLS";
+import AnalysisComponent from "../../components/AnalysisComponent";
 
 export default function Page() {
   return (
