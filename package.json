@@ -1,5 +1,5 @@
 {
-  "name": "url-shortener",
+  "name": "url-shortener-aj",
   "version": "1.0.0",
   "description": "A URL shortener tool built with Next.js",
   "bin": {

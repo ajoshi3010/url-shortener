@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { execSync } from 'child_process';
-import path from 'path';
+const { execSync } = require('child_process');
+const path = require('path');
 
 // The URL of your GitHub repo
 const repoUrl = 'https://github.com/ajoshi3010/url-shortener.git';

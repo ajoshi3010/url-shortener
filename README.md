@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# URL Shortener
+
+A URL Shortener application built with Next.js, Clerk for authentication, and Prisma for database management. This project allows users to shorten long URLs and manage their links efficiently.
+
+## Features
+
+- **Create Short URLs:** Generate short URLs for long links.
+- **Manage Links:** View and manage your created short links.
+- **Authentication:** Sign in using Clerk to manage your URLs securely.
+- **Responsive Design:** Accessible from both desktop and mobile devices.
 
 ## Getting Started
 
-First, run the development server:
+To set up the project locally, follow these instructions:
+
+### Prerequisites
+
+- **Node.js**: Ensure you have Node.js (>=16.x) installed.
+- **npm**: Ensure you have npm (>=8.x) installed.
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/ajoshi3010/url-shortener.git
+   cd url-shortener
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env` file in the root directory and add the required environment variables. Example:
+
+   ```env
+   DATABASE_URL=your-database-url
+   CLERK_FRONTEND_API=your-clerk-frontend-api
+   CLERK_API_KEY=your-clerk-api-key
+   ```
+
+4. **Run database migrations:**
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open `http://localhost:3000` in your browser to view the application.
+
+## Using the CLI Tool
+
+You can use `npx` to quickly set up the project with a single command. This will clone the repository and set up the project for you:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx url-shortener-aj
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### CLI Tool Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **`npx url-shortener`**: This command will automatically fetch the URL Shortener project from GitHub, set up the directory, and install all necessary dependencies.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+- **Create a Short URL:** Go to the URL Shortener page and enter your long URL to get a shortened version.
+- **Manage Links:** Use the management interface to view, edit, or delete your shortened URLs.
+- **Sign In:** Use Clerk’s Sign In Button to log in and access your URL management features.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To deploy the application, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Build the project:**
 
-## Deploy on Vercel
+   ```bash
+   npm run build
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Deploy to your hosting provider (e.g., Vercel):**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   You can deploy directly from your GitHub repository using Vercel or another hosting service of your choice.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes.
+
+
+## Contact
+
+For any questions or support, please contact [vuddawaranirudhjoshi03@gmail.com](mailto:your-email@example.com).
+
+```
+
