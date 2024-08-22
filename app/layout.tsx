@@ -46,17 +46,18 @@ export default function RootLayout({
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         </head>
         <body>
-          <SignedOut>
-            <div className="flex justify-center items-center min-h-screen">
-              <SignInButton />
-            </div>
-          </SignedOut>
-          <SignedIn>
-            <header className="flex justify-between items-center p-4 bg-gray-100">
+          <header className="flex justify-between items-center p-4 bg-gray-100">
+            {/* Show the UserButton only if the user is signed in */}
+            <SignedIn>
               <UserButton />
-            </header>
-            <main>{children}</main>
-          </SignedIn>
+            </SignedIn>
+            {/* Show the SignInButton if the user is not signed in */}
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+          </header>
+          
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>
