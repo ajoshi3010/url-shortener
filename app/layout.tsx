@@ -53,7 +53,7 @@ export default function RootLayout({
             </SignedIn>
             {/* Show the SignInButton if the user is not signed in */}
             <SignedOut>
-              <SignInButton />
+            <SignInButton>Sign In</SignInButton>
             </SignedOut>
             <a href="https://github.com/ajoshi3010/url-shortener"><img src="https://img.icons8.com/?size=100&id=106567&format=png&color=000000" height={30} width={25} alt="git hub repo" /></a>
           </header>

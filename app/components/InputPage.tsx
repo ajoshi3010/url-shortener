@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
 import Clipboard from "clipboard";
 import { useRouter } from "next/navigation";
+import { MyUrls } from "./MyUrls";
 
 // Function to generate random strings
 function generateRandomString(length: number): string {
@@ -246,12 +247,7 @@ const InputPage: React.FC = () => {
                 )}
                 </div>
             </div>
-            <button
-                className="mt-6 bg-gray-500 text-white px-5 py-3 rounded-lg hover:bg-gray-600 transition-colors"
-                onClick={() => router.push("/pages/test")}
-            >
-                My URLs
-            </button>
+            <MyUrls/>
         </div>
     );
 };
