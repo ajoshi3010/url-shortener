@@ -1,20 +1,9 @@
 import URLS from "../../components/URLS";
 import AnalysisComponent from "../../components/AnalysisComponent";
-import { auth } from "@clerk/nextjs/server";
 
 export default function Page() {
-  const { userId } = auth();
 
-  if (!userId) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-gray-100">
-        <div className="text-center p-4 bg-white shadow-md rounded-lg">
-          <h2 className="text-xl font-semibold text-gray-800">Access Restricted</h2>
-          <p className="mt-2 text-gray-600">Please sign in to see the URLs you have created.</p>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-start justify-center p-6">

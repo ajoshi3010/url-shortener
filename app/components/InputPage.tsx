@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
 import Clipboard from "clipboard";
 import { useRouter } from "next/navigation";
-import { MyUrls } from "./MyUrls";
+import { MyUrlsButton } from "./MyUrlsButton";
 
 // Function to generate random strings
 function generateRandomString(length: number): string {
@@ -247,7 +247,7 @@ const InputPage: React.FC = () => {
                 )}
                 </div>
             </div>
-            <MyUrls/>
+            <MyUrlsButton/>
         </div>
     );
 };

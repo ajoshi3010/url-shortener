@@ -4,7 +4,7 @@ import {
     SignedOut,
 } from '@clerk/nextjs';
 import { useRouter } from "next/navigation";
-export const MyUrls = () => {
+export const MyUrlsButton = () => {
     const router = useRouter();
     return (
         <div>
