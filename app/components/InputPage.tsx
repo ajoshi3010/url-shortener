@@ -198,7 +198,7 @@ const InputPage: React.FC = () => {
 
                     {
                         !stringSlashCheck && (
-                            <div className="text-red-600">"Invalid custom url"</div>
+                            <div className="text-red-600">Invalid custom url</div>
                         )
                     }
 
