@@ -56,6 +56,7 @@ const InputPage: React.FC = () => {
     const [mapped, setMapped] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [randomStrings, setRandomStrings] = useState<string[]>([]);
+    const [stringSlashCheck, setStringSlashCheck] = useState(true);
 
     const clipboardRef = useRef<HTMLButtonElement>(null);
     const router = useRouter();
@@ -102,13 +103,30 @@ const InputPage: React.FC = () => {
         setUrl(e.target.value);
     };
 
+
     const handleCustomUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setValidCustom(false);
-        setChecked(false);
+        // console.log(e.target);
+        // console.log(e.target.value);
+        checkForSlash(e.target.value);
         setCustomUrl(e.target.value);
+        setValidCustom(false);
+        setValid(false);
+        setChecked(false);
+    };
+    const checkForSlash = (str:string): void => {
+        // Updated regex to require at least one character (no slashes allowed)
+        const regex = /^[a-zA-Z0-9\-._~!$&'()*+,;=:@%]+$/;
+        setStringSlashCheck(regex.test(str));
+        // console.log(customUrl);
+        // console.log(stringSlashCheck);
     };
 
     const checkCustomUrl = async () => {
+        // checkForSlash();
+        if (!stringSlashCheck) {
+            setValidCustom(false);
+            return;
+        }
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urlCheck`, {
             customUrl: customUrl,
         });
@@ -156,9 +174,11 @@ const InputPage: React.FC = () => {
                             }`}
                         placeholder="Enter custom URL"
                         type="text"
-                        onChange={handleCustomUrlChange}
                         value={customUrl}
+                        onChange={handleCustomUrlChange}
                     />
+                </div>
+                <div className="mb-6">
                     {
                         !checked && (
                             <div className="flex space-x-4 mb-4">
@@ -174,6 +194,13 @@ const InputPage: React.FC = () => {
                             </div>
                         )
                     }
+                    
+
+                    {
+                        !stringSlashCheck && (
+                            <div className="text-red-600">"Invalid custom url"</div>
+                        )
+                    }
 
                     {!loading && !valid && !validCustom && (
                         <button
@@ -183,12 +210,11 @@ const InputPage: React.FC = () => {
                             Check Availability
                         </button>
                     )}
-                </div>
 
                 {validCustom && valid && (
                     <button
-                        className="mt-4 bg-green-500 text-white w-full py-3 rounded-lg hover:bg-green-600 transition-colors"
-                        onClick={addUrlMap}
+                    className="mt-4 bg-green-500 text-white w-full py-3 rounded-lg hover:bg-green-600 transition-colors"
+                    onClick={addUrlMap}
                     >
                         Add URL
                     </button>
@@ -202,7 +228,7 @@ const InputPage: React.FC = () => {
                                 ref={clipboardRef}
                                 className="ml-4 text-gray-500 hover:text-gray-700"
                                 title="Copy to clipboard"
-                            >
+                                >
                                 <ClipboardIcon />
                             </button>
                             {isCopied && <span className="ml-2 text-green-600 text-sm">Copied!</span>}
@@ -210,6 +236,7 @@ const InputPage: React.FC = () => {
                         <p className="text-gray-500 mt-4">Refresh the page to shorten another URL</p>
                     </div>
                 )}
+                </div>
             </div>
             <button
                 className="mt-6 bg-gray-500 text-white px-5 py-3 rounded-lg hover:bg-gray-600 transition-colors"
