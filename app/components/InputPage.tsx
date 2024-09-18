@@ -167,7 +167,15 @@ const InputPage: React.FC = () => {
                     />
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-6 inline-flex" >
+                <input
+                        disabled={true}
+                        className={` placeholder-black w-full p-4 border-2 rounded-lg transition-colors focus:outline-none focus:border-blue-500 ${validCustom ? "border-gray-300 bg-gray-50" : "border-blue-500"
+                            }`}
+                        placeholder={`${process.env.NEXT_PUBLIC_API_BASE_URL}/`}
+                        type="text"
+                        
+                    />
                     <input
                         disabled={mapped}
                         className={`w-full p-4 border-2 rounded-lg transition-colors focus:outline-none focus:border-blue-500 ${validCustom ? "border-gray-300 bg-gray-50" : "border-blue-500"
