@@ -1,4 +1,4 @@
-import AnalysisComponent from "./components/AnalysisComponent";
+
 import InputPage from "./components/InputPage";
 import './globals.css';
 
