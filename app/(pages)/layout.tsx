@@ -5,7 +5,7 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs';
-import './globals.css';
+import '../globals.css';
 
 export const metadata = {
   title: 'URL Shortener',

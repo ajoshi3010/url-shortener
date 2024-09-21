@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import axios from "axios";
 import UrlRow from "./URLRow";
 import BackButton from "./BackButton";
+
 interface Url {
   userUrl: string;
   realUrl: {
@@ -17,8 +18,10 @@ export default async function URLS() {
   const urls: Url[] = response.data.urls; // Ensure the data structure matches your API response
 
   return (
+
+
     <div className="p-6 bg-white rounded-lg shadow-lg">
-      <BackButton/>
+      <BackButton />
       <h2 className="text-2xl font-bold mb-4">My URLs</h2>
       <table className="w-full bg-gray-50 shadow rounded-lg">
         <thead className="bg-gray-800 text-white">
@@ -34,7 +37,8 @@ export default async function URLS() {
           ))}
         </tbody>
       </table>
-      
+
     </div>
+
   );
 }

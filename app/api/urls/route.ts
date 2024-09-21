@@ -1,6 +1,6 @@
 // import { PrismaClient } from "@prisma/client"
 import { NextRequest, NextResponse } from "next/server"
-// import { auth} from '@clerk/nextjs/server'
+// import { auth} from '@clerk/nextjs/server'z
 // import { Result } from "postcss"
 import client from "@/app/lib/prisma";
 export async function POST(req:NextRequest){

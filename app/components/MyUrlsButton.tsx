@@ -13,7 +13,7 @@ export const MyUrlsButton = () => {
 
                 <button
                     className="mt-6 bg-gray-500 text-white px-5 py-3 rounded-lg hover:bg-gray-600 transition-colors"
-                    onClick={() => router.push("/pages/test")}
+                    onClick={() => router.push("/urls")}
                 >
                     My URLs
                 </button>
