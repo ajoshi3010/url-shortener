@@ -17,7 +17,7 @@ export default function Page({ params }: { params: { curl: string } }) {
                             'Content-Type': 'application/json',
                         }
                     });
-
+                    // console.log()
                     if (response.status === 200) {
                         window.location.href = response.data;
                     }

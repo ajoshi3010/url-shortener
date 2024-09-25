@@ -7,9 +7,9 @@ export async function POST(req: NextRequest) {
     // const { userId } = auth()
     const { customUrl } = await req.json();
     try {
-        const realUrl = await client.urlmap.findUnique({
+        const realUrl = await client.shortURL.findUnique({
             where: {
-                userUrl: customUrl,
+                shortUrl: customUrl,
             },
             select: {
                 realUrl: true,
@@ -17,16 +17,7 @@ export async function POST(req: NextRequest) {
         });
 
         if (realUrl) {
-            const urlcount=await client.urlcount.update({
-                where:{
-                    userUrl:customUrl,
-                },
-                data:{
-                    count:{
-                        increment:1
-                    }
-                }
-            })
+            // console.log(realUrl.realUrl)
             // Redirect to the real URL
             return NextResponse.json(realUrl.realUrl);
         } else {
