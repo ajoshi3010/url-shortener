@@ -6,9 +6,7 @@ import Clipboard from "clipboard";
 
 interface Url {
   userUrl: string;
-  realUrl: {
     realUrl: string;
-  };
 }
 
 interface UrlRowProps {
@@ -51,7 +49,7 @@ const UrlRow = ({ url }: UrlRowProps) => {
 
   useEffect(() => {
     const clipboard = new Clipboard(clipboardRef.current!, {
-      text: () => url.realUrl.realUrl,
+      text: () => url.realUrl,
     });
 
     clipboard.on('success', () => {
@@ -64,19 +62,19 @@ const UrlRow = ({ url }: UrlRowProps) => {
     });
 
     return () => clipboard.destroy();
-  }, [url.realUrl.realUrl]);
+  }, [url.realUrl]);
 
   return (
     <tr className="border-b hover:bg-gray-50 transition-colors">
       <td className="py-2 px-4">{url.userUrl}</td>
       <td className="py-2 px-4 max-w-xs truncate flex items-center">
         <a
-          href={url.realUrl.realUrl}
+          href={url.realUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="block whitespace-nowrap overflow-hidden text-ellipsis text-blue-500 hover:text-blue-700"
         >
-          {url.realUrl.realUrl}
+          {url.realUrl}
         </a>
         <button
           ref={clipboardRef}

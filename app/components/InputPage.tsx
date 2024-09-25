@@ -131,7 +131,8 @@ const InputPage: React.FC = () => {
         });
         checkUrl();
         setChecked(true);
-        setValidCustom(res.data.check);
+        // console.log(res.data);
+        setValidCustom(!res.data.exists);
     };
 
     const addUrlMap = async () => {
@@ -237,7 +238,7 @@ const InputPage: React.FC = () => {
                         </button>
                     )}
 
-                    {!loading2 && validCustom && valid && (
+                    {!loading2 && validCustom && valid && !mapped  && (
                         <button
                             className="mt-4 bg-green-500 text-white w-full py-3 rounded-lg hover:bg-green-600 transition-colors"
                             onClick={addUrlMap}

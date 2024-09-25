@@ -5,9 +5,7 @@ import BackButton from "./BackButton";
 
 interface Url {
   userUrl: string;
-  realUrl: {
     realUrl: string;
-  };
 }
 
 export default async function URLS() {
@@ -15,7 +13,8 @@ export default async function URLS() {
   const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/urls`, {
     userId: userId,
   });
-  const urls: Url[] = response.data.urls; // Ensure the data structure matches your API response
+  const urls: Url[] = response.data.urls;
+  console.log(urls) // Ensure the data structure matches your API response
 
   return (
 

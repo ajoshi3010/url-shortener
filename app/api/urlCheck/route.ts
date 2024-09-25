@@ -1,4 +1,4 @@
-// app/api/shortUrls/checkUrl/route.ts
+
 
 import { NextRequest, NextResponse } from "next/server";
 import client from "@/app/lib/prisma";
