@@ -6,8 +6,21 @@ const getOSInfo = (userAgent: string): string => {
     if (userAgent.includes('Windows')) return 'Windows';
     if (userAgent.includes('Macintosh')) return 'macOS';
     if (userAgent.includes('Linux')) return 'Linux';
-    return 'Unknown OS';
+    if (userAgent.includes('Android')) return 'Android';
+    if (userAgent.includes('like Mac')) return 'iOS'; // iPad or iPhone
+    if (userAgent.includes('CrOS')) return 'Chrome OS'; // Chrome OS devices
+    if (userAgent.includes('FreeBSD')) return 'FreeBSD';
+    if (userAgent.includes('NetBSD')) return 'NetBSD';
+    if (userAgent.includes('OpenBSD')) return 'OpenBSD';
+    if (userAgent.includes('SunOS')) return 'Solaris';
+    if (userAgent.includes('BlackBerry')) return 'BlackBerry';
+    if (userAgent.includes('BB10')) return 'BlackBerry 10';
+    if (userAgent.includes('IEMobile')) return 'Windows Phone';
+    if (userAgent.includes('Opera Mini')) return 'Opera Mini';
+    
+    return 'Unknown OS'; // Default value for unrecognized OS
 };
+
 
 export async function POST(req: NextRequest) {
     try {

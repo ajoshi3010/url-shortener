@@ -14,7 +14,7 @@ export default async function URLS() {
     userId: userId,
   });
   const urls: Url[] = response.data.urls;
-  console.log(urls) // Ensure the data structure matches your API response
+  // console.log(urls) // Ensure the data structure matches your API response
 
   return (
 
